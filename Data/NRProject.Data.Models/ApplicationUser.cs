@@ -6,6 +6,7 @@ namespace NRProject.Data.Models
 
     using Microsoft.AspNetCore.Identity;
     using NRProject.Data.Common.Models;
+    using NRProject.Data.Common.Models.Enums;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -26,6 +27,8 @@ namespace NRProject.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public WorkerOrHirer WorkerOrHirer { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
