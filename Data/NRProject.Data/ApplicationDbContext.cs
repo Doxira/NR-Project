@@ -25,6 +25,12 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<JobCategory> JobCategories { get; set; }
+
+        public DbSet<JobPosts> JobPosts { get; set; }
+
+        public DbSet<JobOffers> JobOffers { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
