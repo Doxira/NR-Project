@@ -1,19 +1,20 @@
 ﻿namespace NRProject.Web.Controllers
 {
+    using System.Linq;
+
     using Microsoft.AspNetCore.Mvc;
     using NRProject.Data;
     using NRProject.Data.Common.Models;
     using NRProject.Data.Common.Repositories;
-    using NRProject.Web.ViewModels.Jobs;
     using NRProject.Services.Mapping;
-    using System.Linq;
+    using NRProject.Web.ViewModels.Jobs;
 
     public class JobsController : BaseController
     {
 
         private readonly IRepository<JobCategory> jobrepo;
 
-        public JobsController(IRepository<JobCategory>jobrepo)
+        public JobsController(IRepository<JobCategory> jobrepo)
         {
             this.jobrepo = jobrepo;
         }
