@@ -1,23 +1,26 @@
-﻿namespace NRProject.Web.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+using NRProject.Data.Common.Models;
+using NRProject.Data.Common.Repositories;
+using NRProject.Services.Data;
+namespace NRProject.Web.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-    using NRProject.Data.Common.Models;
-    using NRProject.Data.Common.Repositories;
-    using NRProject.Web.ViewModels.JobPost;
 
-    public class CreateJobPostController
+
+
+    public class CreateJobPostController : BaseController
     {
-        private readonly IRepository<JobPosts> jobPostsRepo;
+        private readonly IRepository<JobPosts> jobPosts;
+        private readonly IJobPostService jobPostService;
 
-        public CreateJobPostController(IRepository<JobPosts> jobPostsRepo)
+        public CreateJobPostController(IRepository<JobPosts> jobPosts, IJobPostService jobPostService)
         {
-            this.jobPostsRepo = jobPostsRepo;
+            this.jobPosts = jobPosts;
+            this.jobPostService = jobPostService;
+
         }
-
-        public IActionResult Create()
+        public IActionResult CreatePost(string Title,string Content,JobCategory jobCategory)
         {
-            var inputmodel = new InputJobPostViewModel();
-            
+            return this.View();
         }
     }
 }
