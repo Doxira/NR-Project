@@ -14,7 +14,7 @@
             this.jobpostsrepo = jobpostsrepo;
         }
 
-        public async Task CreateAsync(string title, string content,string userId)
+        public async Task CreateAsync(string title, string content,JobCategory jobCategory,string userId)
         {
             var jobpost = new JobPosts
             {
@@ -24,7 +24,6 @@
             };
             await this.jobpostsrepo.AddAsync(jobpost);
             await this.jobpostsrepo.SaveChangesAsync();          
-
         }
     }
 }

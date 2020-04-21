@@ -2,14 +2,13 @@
 @{
     this.ViewData["Title"] = "Create Job";
 }
-    <form method="post" asp-action="Create">
-        <input asp-for="Title" />
-        <input asp-for="Content" />
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1">Example textarea</label>
-            <input asp-for="JobCategory" />
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <input type="submit" class="btn btn-primary" />
+<form method="post" asp-action="Create">
+    <input asp-for="Title" />
+    <input asp-for="Content" />
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Content</label>       
+        <textarea asp-for="Content"class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary" />
 
-    </form>
+</form>
