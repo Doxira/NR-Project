@@ -1,26 +1,44 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using NRProject.Data.Common.Models;
-using NRProject.Data.Common.Repositories;
-using NRProject.Services.Data;
-namespace NRProject.Web.Controllers
+﻿namespace NRProject.Web.Controllers
 {
-
-
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using NRProject.Data.Common.Models;
+    using NRProject.Data.Common.Repositories;
+    using NRProject.Data.Models;
+    using NRProject.Services.Data;
+    using NRProject.Web.ViewModels.JobPost;
+    using System.Threading.Tasks;
 
     public class CreateJobPostController : BaseController
     {
-        private readonly IRepository<JobPosts> jobPosts;
         private readonly IJobPostService jobPostService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public CreateJobPostController(IRepository<JobPosts> jobPosts, IJobPostService jobPostService)
+        public CreateJobPostController(IJobPostService jobPostService, UserManager<ApplicationUser> userManager)
         {
-            this.jobPosts = jobPosts;
             this.jobPostService = jobPostService;
-
+            this.userManager = userManager;
         }
-        public IActionResult CreatePost(string Title,string Content,JobCategory jobCategory)
+
+        [Authorize]
+        public IActionResult CreatePost()
         {
             return this.View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> CreatePost(InputJobPostViewModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            var user = await this.userManager.GetUserAsync(this.User);
+            await this.jobPostService.CreateAsync(input.Title, input.Content,user.Id);
+            return this.RedirectToPage("~/Home/Index");
         }
     }
 }

@@ -6,6 +6,6 @@
 
     public interface IJobPostService
     {
-        void CreateAsync(string title, string content, JobCategory jobCategory);
+        Task CreateAsync(string title, string content, string userId);
     }
 }

@@ -1,31 +1,15 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Add a Movie</title>
-</head>
-<body>
-    <h1>Add a Movie</h1>
-    <form method="post">
-        <fieldset>
-            <legend>Movie Information</legend>
-            <p>
-                <label for="title">Title:</label>
-                <input type="text" name="title" value="["title"]" />
-            </p>
+﻿@model NRProject.Web.ViewModels.JobPost.InputJobPostViewModel;
+@{
+    this.ViewData["Title"] = "Create Job";
+}
+    <form method="post" asp-action="Create">
+        <input asp-for="Title" />
+        <input asp-for="Content" />
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <input asp-for="JobCategory" />
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary" />
 
-            <p>
-                <label for="genre">Genre:</label>
-                <input type="text" name="genre" value="["genre"]" />
-            </p>
-
-            <p>
-                <label for="year">Year:</label>
-                <input type="text" name="year" value="["year"]" />
-            </p>
-
-            <p><input type="submit" name="buttonSubmit" value="Add Movie" /></p>
-        </fieldset>
     </form>
-</body>
-</html>

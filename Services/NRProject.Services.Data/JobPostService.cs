@@ -3,6 +3,7 @@
 
     using NRProject.Data.Common.Models;
     using NRProject.Data.Common.Repositories;
+    using System.Threading.Tasks;
 
     public class JobPostService : IJobPostService
     {
@@ -13,16 +14,17 @@
             this.jobpostsrepo = jobpostsrepo;
         }
 
-        public void CreateAsync(string title, string content, JobCategory jobCategory)
+        public async Task CreateAsync(string title, string content,string userId)
         {
             var jobpost = new JobPosts
             {
                 Title = title,
                 Content = content,
-                JobCategory = jobCategory,
+                UserId=userId,
             };
-             this.jobpostsrepo.AddAsync(jobpost);
-             this.jobpostsrepo.SaveChangesAsync();
+            await this.jobpostsrepo.AddAsync(jobpost);
+            await this.jobpostsrepo.SaveChangesAsync();          
+
         }
     }
 }
