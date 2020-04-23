@@ -37,8 +37,8 @@
             }
 
             var user = await this.userManager.GetUserAsync(this.User);
-            await this.jobPostService.CreateAsync(input.Title, input.Content,input.JobCategory,user.Id);
-            return this.RedirectToPage("~/Home/Index");
+            await this.jobPostService.CreateAsync(input.Title, input.Content,input.JobCategoryId,user.Id);
+            return this.RedirectToAction("Index", "Jobs");
         }
     }
 }

@@ -11,6 +11,6 @@
 
         public string Content { get; set; }
 
-        public virtual JobCategory JobCategory { get; set; }
+        public virtual int JobCategoryId { get; set; }
     }
 }
