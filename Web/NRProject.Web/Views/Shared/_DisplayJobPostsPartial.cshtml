@@ -1,0 +1,27 @@
+﻿@model NRProject.Web.ViewModels.Jobs.IndexJobsPostsViewModel
+    <div class="card text-center">
+        <div class="card-header">
+            @Model.JobCategory.Name
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <p class="card-text">@Model.Content</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+            @Model.CreatedOn
+        </div>
+    </div>
+@*<div class="card text-center">
+    <div class="card-header">
+        @Model.JobCategory.Name
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Content</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+        @Model.CreatedOn
+    </div>
+</div>*@

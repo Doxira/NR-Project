@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\NRProject.Data.Common\NRProject.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\NRProject.Data.Models\NRProject.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\NRProject.Web.ViewModels\NRProject.Web.ViewModels.csproj" />
     <ProjectReference Include="..\NRProject.Services.Mapping\NRProject.Services.Mapping.csproj" />
   </ItemGroup>
 

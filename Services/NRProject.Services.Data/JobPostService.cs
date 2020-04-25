@@ -3,6 +3,10 @@
 
     using NRProject.Data.Common.Models;
     using NRProject.Data.Common.Repositories;
+    using NRProject.Services.Mapping;
+    using NRProject.Web.ViewModels.Jobs;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class JobPostService : IJobPostService
@@ -25,6 +29,13 @@
             };
             await this.jobpostsrepo.AddAsync(jobpost);
             await this.jobpostsrepo.SaveChangesAsync();           
+        }
+
+        public ICollection<IndexJobsPostsViewModel> GetAllJobPosts()
+        {
+            var jobpostses = this.jobpostsrepo.All().To<IndexJobsPostsViewModel>().ToList();
+            return jobpostses;
+           
         }
     }
 }
