@@ -8,7 +8,7 @@ namespace NRProject.Web.ViewModels.Jobs
 {
     public class IndexJobsPostsViewModel : IMapFrom<JobPosts>
     {
-        //public IQueryable<JobPosts> JobPosts { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
 
         public string Content { get; set; }

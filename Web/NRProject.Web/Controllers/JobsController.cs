@@ -14,12 +14,11 @@
     {
         private readonly IJobPostService jobPost;
         private readonly IRepository<JobCategory> jobrepo;
-        private readonly IDeletableEntityRepository<JobPosts> jobPostRepo;
-        public JobsController(IRepository<JobCategory> jobrepo,IJobPostService jobPost,IDeletableEntityRepository<JobPosts>jobPostRepo)
+        
+        public JobsController(IRepository<JobCategory> jobrepo,IJobPostService jobPost)
         {
             this.jobrepo = jobrepo;
             this.jobPost = jobPost;
-            this.jobPostRepo = jobPostRepo;
         } 
 
         public IActionResult Index()
@@ -28,16 +27,15 @@
             var jobCategories = this.jobrepo.All().To<IndexJobsCategoryViewModel>()
                 .ToList();
             viewModel.JobCategories = jobCategories;
-            var settings = jobPost.GetAllJobPosts();
+            var settings = this.jobPost.GetAllJobPosts();
             viewModel.JobPosts = settings;
             return this.View(viewModel);
         }
 
-        //[HttpGet]
-        //public IActionResult Something()
-        //{
-        //    var setting = jobPost.GetAllJobPosts();
-        //    return Ok(setting);
-        //}
+        public IActionResult PostById(int id)
+        {
+            var postViewModelById = this.jobPost.GetById<PostByIdViewModel>(id);
+            return this.View(postViewModelById);
+        }
     }
 }

@@ -37,5 +37,11 @@
             return jobpostses;
            
         }
+
+        public T GetById<T>(int id)
+        {
+            var jobpost = this.jobpostsrepo.All().Where(x => x.Id == id).To<T>().FirstOrDefault();
+            return jobpost;
+        }
     }
 }

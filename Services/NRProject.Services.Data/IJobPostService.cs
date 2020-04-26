@@ -11,5 +11,7 @@
         Task CreateAsync(string title, string content,int jobCategoryId, string userId);
 
         ICollection<IndexJobsPostsViewModel> GetAllJobPosts();
+
+        T GetById<T>(int id);
     }
 }
