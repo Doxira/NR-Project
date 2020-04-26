@@ -35,7 +35,7 @@
         public IActionResult PostById(int id)
         {
             var postViewModelById = this.jobPost.GetById<PostByIdViewModel>(id);
-            return this.View(postViewModelById);
+            return this.View("PostById",postViewModelById);
         }
     }
 }

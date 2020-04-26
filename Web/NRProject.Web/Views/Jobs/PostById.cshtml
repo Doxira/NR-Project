@@ -2,6 +2,10 @@
 @{
     this.ViewData["Title"] = Model.Title;
 }
-<h1>@Model.Title</h1>
-
-<p>@Model.Content</p>
+    <h1>@Model.Title<span class="badge badge-secondary">@Model.JobCategory.Name</span></h1>
+    <div class="alert alert-success" role="alert">
+        This job was created by <h3 class="alert-link">@Model.UserUsername</h3> on @Model.CreatedOn
+    </div>
+    <p class="lead">
+        @Model.Content
+    </p>
