@@ -22,8 +22,13 @@
         }
 
         [Authorize]
-        public IActionResult CreatePost()
+        public async Task<IActionResult> CreatePost()
         {
+            var user = await this.userManager.GetUserAsync(this.User);
+            if ((int)user.WorkerOrHirer == 1)
+            {
+                return this.RedirectToAction("Index", "Jobs");
+            }
             return this.View();
         }
 
@@ -31,12 +36,15 @@
         [Authorize]
         public async Task<IActionResult> CreatePost(InputJobPostViewModel input)
         {
-            if (!this.ModelState.IsValid)
+            var user = await this.userManager.GetUserAsync(this.User);
+            if ((int)user.WorkerOrHirer==1)
+            {
+                return this.RedirectToAction("Index", "Jobs");
+            }
+            else if (!this.ModelState.IsValid)
             {
                 return this.View(input);
             }
-
-            var user = await this.userManager.GetUserAsync(this.User);
             await this.jobPostService.CreateAsync(input.Title, input.Content,input.JobCategoryId,user.Id);
             return this.RedirectToAction("Index", "Jobs");
         }

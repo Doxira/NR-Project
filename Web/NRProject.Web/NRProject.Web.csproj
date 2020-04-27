@@ -43,4 +43,8 @@
     <ProjectReference Include="..\NRProject.Web.Infrastructure\NRProject.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\NRProject.Web.ViewModels\NRProject.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Views\Dashboard\" />
+  </ItemGroup>
 </Project>
