@@ -44,9 +44,9 @@
             return jobpost;
         }
 
-        public ICollection<IndexJobsPostsViewModel> GetJobPostsByCategory(int jobCategoryId)
+        public ICollection<IndexJobsPostsViewModel> GetJobPostsByCategory(JobCategory JobCategory)
         {
-            var jobPostByCategory = this.jobpostsrepo.All().Where(x => x.JobCategoryId == jobCategoryId).To<IndexJobsPostsViewModel>().ToList();
+            var jobPostByCategory = this.jobpostsrepo.All().Where(x => x.JobCategory == JobCategory).To<IndexJobsPostsViewModel>().ToList();
             return jobPostByCategory;
         }
     }

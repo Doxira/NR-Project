@@ -1,5 +1,5 @@
-﻿@model NRProject.Web.ViewModels.Jobs.JobsViewModel
-@foreach (var item in Model.JobPosts)
+﻿@model IEnumerable<NRProject.Web.ViewModels.Jobs.IndexJobsPostsViewModel>
+@foreach (var item in Model)
 {
     @await Html.PartialAsync("_DisplayJobPostsPartial", item)
 }
