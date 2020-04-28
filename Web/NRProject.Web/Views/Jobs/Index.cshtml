@@ -1,14 +1,20 @@
 ﻿@model NRProject.Web.ViewModels.Jobs.JobsViewModel
+@{
+    var jobId = Model.JobCategories.Select(x => x.Id);
+}
 <ul class="list-group list-group-horizontal-md">
+    
     @foreach (var jobCategory in Model.JobCategories)
     {
-        <a href="" class="list-group-item">@jobCategory.Name</a>
+        <a asp-controller="Jobs" asp-action="PostByCategory" asp-route-id="@jobCategory.Id" class="list-group-item">@jobCategory.Name</a>
     }
 </ul>
 @foreach (var item in Model.JobPosts)
 {
     @await Html.PartialAsync("_DisplayJobPostsPartial", item)
 }
+
+
 @*<div class="card text-center">
         <div class="card-header">
             Featured

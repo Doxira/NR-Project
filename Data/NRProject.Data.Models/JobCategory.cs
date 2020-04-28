@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class JobCategory
+    public class JobCategory 
     {
         public JobCategory()
         {

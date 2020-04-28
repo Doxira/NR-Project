@@ -13,5 +13,7 @@
         ICollection<IndexJobsPostsViewModel> GetAllJobPosts();
 
         T GetById<T>(int id);
+
+        ICollection<IndexJobsPostsViewModel> GetJobPostsByCategory(int jobCategoryId);
     }
 }

@@ -37,7 +37,7 @@
         public async Task<IActionResult> CreatePost(InputJobPostViewModel input)
         {
             var user = await this.userManager.GetUserAsync(this.User);
-            if ((int)user.WorkerOrHirer==1)
+            if ((int)user.WorkerOrHirer == 1)
             {
                 return this.RedirectToAction("Index", "Jobs");
             }
