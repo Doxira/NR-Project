@@ -1,0 +1,9 @@
+﻿@model NRProject.Web.ViewModels.JobOfers.InputJobOfferViewModel
+
+<form method="post" asp-action="CreateJobOffer" asp-controller="JobOffers">
+    <div class="form-group">
+        <label for="">Content</label>
+        <textarea asp-for="@this.Model.Description" class="form-control" id="Description" rows="3"></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary" />
+</form>

@@ -37,15 +37,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Jobs" asp-action="Index">Jobs</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CreateJobPost" asp-action="CreatePost">Create Job</a>
-                        </li>
-                        <Authorize>
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="MyJobs" asp-action="PostByUser">My Jobs</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="CreateJobPost" asp-action="CreatePost">Create Job</a>
+                            </li> 
+                            <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="MyJobs" asp-action="PostByUser">My Jobs</a>
                             </li>
-                        </Authorize>
-                    </ul>
+                        }
+                        </ul>
                 </div>
             </div>
         </nav>

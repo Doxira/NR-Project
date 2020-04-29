@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NRProject.Web.ViewModels.JobOfers;
+using System.Threading.Tasks;
 
 namespace NRProject.Services.Data
 {
-    class IJobOffersService
+     public interface IJobOffersService
     {
+        Task CreateAsync(int jobPostId,string Description,string ApplicationUserId);
     }
 }

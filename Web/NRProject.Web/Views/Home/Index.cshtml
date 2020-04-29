@@ -10,20 +10,22 @@
             <p class="h1 font-weight-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore is nostrud</p>
             <p class="h5 font-weight-dark">Millions of small businesses use Freelancer to turn their ideas into reality.</p>
         </div>
-
     </div>
-    <div class="row">
-        <div class="col-6 d-flex px-0 mt-2">
-            <div class="col">
-                <button type="button" class="btn btn-primary btn-lg mr-3">
-                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                </button>
-                <button type="button" class="btn btn-primary btn-lg">
-                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                </button>
+    @if (!this.User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            <div class="col-6 d-flex px-0 mt-2">
+                <div class="col">
+                    <button type="button" class="btn btn-primary btn-lg mr-3">
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg">
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+     } 
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -17,6 +17,7 @@ namespace NRProject.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.JobPosts = new HashSet<JobPosts>();
+            this.JobOffers = new HashSet<JobOffers>();
         }
 
         // Audit info
