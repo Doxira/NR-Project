@@ -38,5 +38,7 @@ namespace NRProject.Data.Models
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
         public virtual ICollection<JobPosts> JobPosts { get; set; }
+
+        public virtual ICollection<JobOffers> JobOffers { get; set; }
     }
 }
