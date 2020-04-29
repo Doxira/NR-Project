@@ -49,5 +49,11 @@
             var jobPostByCategory = this.jobpostsrepo.All().Where(x => x.JobCategory == JobCategory).To<IndexJobsPostsViewModel>().ToList();
             return jobPostByCategory;
         }
+
+        public ICollection<IndexJobsPostsViewModel> GetJobPostsByUser(string id)
+        {
+            var jobPostsByUser = this.jobpostsrepo.All().Where(x => x.UserId == id).To<IndexJobsPostsViewModel>().ToList();
+            return jobPostsByUser;
+        }
     }
 }
