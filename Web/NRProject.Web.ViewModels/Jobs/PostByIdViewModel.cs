@@ -25,8 +25,8 @@
 
         public string UserUsername { get; set; }
 
-        public virtual ICollection<JobOffers> JobOffers { get; set; }
-
         public IEnumerable<InputJobOfferViewModel> InputJobOffer { get; set; }
+
+        public IEnumerable<JobOffers> jobOffers { get; set; }
     }
 }

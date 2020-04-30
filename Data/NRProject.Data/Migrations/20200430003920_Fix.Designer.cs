@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NRProject.Data;
 
 namespace NRProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200430003920_Fix")]
+    partial class Fix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -314,6 +316,9 @@ namespace NRProject.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -332,19 +337,13 @@ namespace NRProject.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserUsername")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("JobPostsId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("JobOffers");
                 });
@@ -417,15 +416,15 @@ namespace NRProject.Data.Migrations
 
             modelBuilder.Entity("NRProject.Data.Models.JobOffers", b =>
                 {
+                    b.HasOne("NRProject.Data.Models.ApplicationUser", "User")
+                        .WithMany("JobOffers")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("NRProject.Data.Common.Models.JobPosts", "JobPosts")
                         .WithMany("JobOffers")
                         .HasForeignKey("JobPostsId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("NRProject.Data.Models.ApplicationUser", "User")
-                        .WithMany("JobOffers")
-                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,6 +7,8 @@
 
     public class InputJobOfferViewModel : IMapFrom<JobOffers>
     {
+        public int Id { get; set; }
+
         [Required]
         public int JobPostsId { get; set; }
 
@@ -15,5 +17,7 @@
 
         [Required]
         public string Description { get; set; }
+
+        public string UserUsername { get; set; }
     }
 }

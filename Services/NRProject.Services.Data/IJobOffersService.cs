@@ -5,6 +5,6 @@ namespace NRProject.Services.Data
 {
      public interface IJobOffersService
     {
-        Task CreateAsync(int jobPostId,string Description,string ApplicationUserId);
+        Task CreateAsync(int jobPostId,string Description,string ApplicationUserId, string userUsername);
     }
 }

@@ -24,7 +24,7 @@ namespace NRProject.Web.Controllers
         public async Task<IActionResult> CreateJobOffer(InputJobOfferViewModel input)
         {
             var user = await this.userManager.GetUserAsync(this.User);
-            await this.jobOffersService.CreateAsync(input.JobPostsId, input.Description, user.Id);
+            await this.jobOffersService.CreateAsync(input.JobPostsId, input.Description, user.Id,user.UserName);
             return this.RedirectToAction("PostById", "Jobs", new { id = input.JobPostsId });
         }
 

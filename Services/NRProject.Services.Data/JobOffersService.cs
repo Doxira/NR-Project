@@ -16,13 +16,14 @@
         {
             this.jobOffersRepo = jobOffersRepo;
         }
-        public async Task CreateAsync(int jobPostId, string description, string applicationUserId)
+        public async Task CreateAsync(int jobPostId, string description, string applicationUserId,string userUsername)
         {
             var jobOffer = new JobOffers
             {
                 JobPostsId = jobPostId,
                 Description = description,
-                ApplicationUserId = applicationUserId,
+                UserId = applicationUserId,
+                UserUsername=userUsername,
             };
             await this.jobOffersRepo.AddAsync(jobOffer);
             await this.jobOffersRepo.SaveChangesAsync();

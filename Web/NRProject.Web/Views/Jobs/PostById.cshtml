@@ -10,11 +10,31 @@
 <p class="lead">
     @Model.Content
 </p>
-@*<form method="post" asp-action="CreateJobOffer" asp-controller="JobOffers">
-    <div class="form-group">
-        <label for="">Content</label>
-        <textarea  class="form-control" id="Description" rows="3"></textarea>
+<div>
+    <form asp-controller="JobOffers" asp-action="CreateJobOffer" method="post" id="AddCommentForm">
+        <input type="hidden" name="JobPostsId" value="@this.Model.Id" />
+        <div>
+            <label for="Content"></label>
+            <textarea name="Description" id="Description" class="form-control"></textarea>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Add comment" />
+        </div>
+    </form>
+</div>
+
+@foreach (var item in Model.jobOffers)
+{
+    <br />
+        <div class="card">
+        <div class="card-header">
+        Job Offer
+        </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                <p>@item.Description</p>
+            <footer class="blockquote-footer">Offered by <cite title="Source Title">@item.UserUsername</cite></footer>
+        </blockquote>
     </div>
-    <input type="submit" class="btn btn-primary" />
-</form>*@
-@*@await Html.PartialAsync("_FormJobOffersPartial")*@
+</div>
+}
