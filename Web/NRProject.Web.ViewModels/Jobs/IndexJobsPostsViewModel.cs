@@ -21,6 +21,16 @@ namespace NRProject.Web.ViewModels.Jobs
         public virtual JobCategory JobCategory { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
+        public string ShortContent
+        {
+            get
+            {
+                var content = this.Content;
+                return content.Length > 300
+                        ? content.Substring(0, 300) + "..."
+                        : content;
+            }
+        }
 
         public int ApplicationUserId { get; set; }
 

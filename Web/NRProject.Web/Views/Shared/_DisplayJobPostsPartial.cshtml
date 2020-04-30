@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <h5 class="card-title">@Model.Title</h5>
-            <p class="card-text">@Model.Content</p>
+            <p class="card-text">@Model.ShortContent</p>
             <a  asp-controller="Jobs" asp-action="PostById" asp-route-id="@Model.Id" class="btn btn-primary">Go to t</a>
         </div>
         <div class="card-footer text-muted">

@@ -1,8 +1,14 @@
 ﻿@model NRProject.Web.ViewModels.Jobs.PostByIdViewModel;
+@using Microsoft.AspNetCore.Identity
+@using NRProject.Data.Models
+@inject UserManager<ApplicationUser> UserManager
 @{
     this.ViewData["Title"] = Model.Title;
 }
 
+@{
+    var user = await this.UserManager.GetUserAsync(this.User);
+}
 <h1>@Model.Title<span class="badge badge-secondary">@Model.JobCategory.Name</span></h1>
 <div class="alert alert-success" role="alert">
     This job was created by <h3 class="alert-link">@Model.UserUsername</h3> on @Model.CreatedOn
@@ -10,6 +16,7 @@
 <p class="lead">
     @Model.Content
 </p>
+@if((int)user.WorkerOrHirer==1){
 <div>
     <form asp-controller="JobOffers" asp-action="CreateJobOffer" method="post" id="AddCommentForm">
         <input type="hidden" name="JobPostsId" value="@this.Model.Id" />
@@ -22,19 +29,19 @@
         </div>
     </form>
 </div>
-
+}
 @foreach (var item in Model.jobOffers)
 {
     <br />
-        <div class="card">
+    <div class="card">
         <div class="card-header">
-        Job Offer
+            Job Offer
         </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
                 <p>@item.Description</p>
-            <footer class="blockquote-footer">Offered by <cite title="Source Title">@item.UserUsername</cite></footer>
-        </blockquote>
+                <footer class="blockquote-footer">Offered by <cite title="Source Title">@item.UserUsername</cite></footer>
+            </blockquote>
+        </div>
     </div>
-</div>
 }

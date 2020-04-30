@@ -3,6 +3,9 @@
 @using Microsoft.AspNetCore.Identity
 @using NRProject.Data.Models
 @inject UserManager<ApplicationUser> UserManager
+@{  
+    var user = await this.UserManager.GetUserAsync(this.User);
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +38,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Privacy" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Jobs" asp-action="Index">Jobs</a>
                         </li>
-                        @if (this.User.Identity.IsAuthenticated)
+                        @if (this.User.Identity.IsAuthenticated&&(int)user.WorkerOrHirer==2)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="CreateJobPost" asp-action="CreatePost">Create Job</a>
